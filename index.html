@@ -19,13 +19,10 @@
                 align-items: center;
                 justify-content: center;
             }
-            #caminfo{
+            #fullscreenbtn{
                 position: fixed;
-                top: 10px;
-                left: 10px;
-                background-color: rgba(0, 0, 0, 0.5);
-                padding: 0 20px;
-                border-radius: 10px;
+                top:0;
+                left: 0;;
             }
             #videocol{
                 width: 100%;
@@ -40,17 +37,44 @@
         </style>
     </head>
     <body>
+        <div id="fullscreenbtn" onclick="requestFullScreen(document.body)">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrows-maximize" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <polyline points="16 4 20 4 20 8"></polyline>
+                <line x1="14" y1="10" x2="20" y2="4"></line>
+                <polyline points="8 20 4 20 4 16"></polyline>
+                <line x1="4" y1="20" x2="10" y2="14"></line>
+                <polyline points="16 20 20 20 20 16"></polyline>
+                <line x1="14" y1="14" x2="20" y2="20"></line>
+                <polyline points="8 4 4 4 4 8"></polyline>
+                <line x1="4" y1="4" x2="10" y2="10"></line>
+            </svg>
+        </div>
         <div id="videocol">
             <div class="videorow">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/AdUw5RdyZxI?&autoplay=1&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/8KGXSjtS5pk?&autoplay=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/s0AbpiKIJS8?&autoplay=1&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="290" src="https://www.youtube.com/embed/AdUw5RdyZxI?&autoplay=1&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="290" src="https://www.youtube.com/embed/8KGXSjtS5pk?&autoplay=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="290" src="https://www.youtube.com/embed/s0AbpiKIJS8?&autoplay=1&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="videorow">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/Wt5M-1LAKDQ?&autoplay=1&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/EEIk7gwjgIM?&autoplay=1&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/_VLC97HxYVQ?&autoplay=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="290" src="https://www.youtube.com/embed/Wt5M-1LAKDQ?&autoplay=1&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="290" src="https://www.youtube.com/embed/EEIk7gwjgIM?&autoplay=1&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="290" src="https://www.youtube.com/embed/_VLC97HxYVQ?&autoplay=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
+        <script>
+            function requestFullScreen(element) {
+                // Supports most browsers and their versions.
+                var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+                if (requestMethod) { // Native full screen.
+                    requestMethod.call(element);
+                } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+                    var wscript = new ActiveXObject("WScript.Shell");
+                    if (wscript !== null) {
+                        wscript.SendKeys("{F11}");
+                    }
+                }
+            }
+        </script>
     </body>
 </html>
